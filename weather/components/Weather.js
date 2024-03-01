@@ -1,21 +1,20 @@
-import { View, Text, Image, StyleSheet } from "react-native"
+import { View, Text, Image } from "react-native"
 import { useEffect, useState } from "react"
 
 const api = {
-    url: process.env.EXPO_PUBLIC_API_URL,
-    key: process.env.EXPO_PUBLIC_API_KEY,
-    icons: process.env.EXPO_PUBLIC_ICONS_URL
+    url: 'https://api.openweathermap.org/data/2.5/weather?',
+    key: 'e98968adbed1d6529857f9108be471b1',
+    icons: 'http://openweathermap.org/img/wn/'
 }
 
 export default function Weather(props) {
-
     const [temp, setTemp] = useState(0)
     const [description, setDescription] = useState('')
     const [icon, setIcon] = useState('')
     
     useEffect (() => {
         const url = api.url +
-            'lat=' + props.latitude
+            'lat=' + props.latitude +
             '&lon=' + props.longitude +
             '&units=metric' +
             '&appid=' + api.key
@@ -36,7 +35,7 @@ export default function Weather(props) {
 
     return (
         <View>
-            <Text style={styles.temp}>{temp}</Text>
+            <Text >{temp}</Text>
             {icon &&
                 <Image source={{uri: icon}} style={{width: 100, height: 100}} />
             }
@@ -45,10 +44,3 @@ export default function Weather(props) {
     )
 
 }
-
-const styles = StyleSheet.create({
-    temp: {
-        fontSize: 16,
-    },
-
-  });
