@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 const api = {
     url: 'https://api.openweathermap.org/data/2.5/weather?',
-    key: 'e98968adbed1d6529857f9108be471b1',
+    key: '',
     icons: 'http://openweathermap.org/img/wn/'
 }
 
